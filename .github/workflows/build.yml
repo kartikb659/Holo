@@ -10,7 +10,7 @@ jobs:
           xcodebuild -project Holo.xcodeproj -scheme Holo -configuration Release \
             CODE_SIGN_IDENTITY="-" CODE_SIGNING_ALLOWED=YES \
             -derivedDataPath build build
-            - name: Re-sign app consistently
+      - name: Re-sign app consistently
         run: |
           codesign --force --deep --sign - build/Build/Products/Release/Holo.app
       - name: Zip app
