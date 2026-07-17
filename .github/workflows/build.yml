@@ -1,0 +1,16 @@
+name: Build Holo
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build app
+        run: |
+          xcodebuild -project Holo.xcodeproj -scheme Holo -configuration Release \
+            CODE_SIGN_IDENTITY="-" CODE_SIGNING_ALLOWED=YES \
+            -derivedDataPath build build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Holo-app
+          path: build/Build/Products/Release/Holo.app
