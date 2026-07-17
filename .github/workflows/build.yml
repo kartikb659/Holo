@@ -10,7 +10,11 @@ jobs:
           xcodebuild -project Holo.xcodeproj -scheme Holo -configuration Release \
             CODE_SIGN_IDENTITY="-" CODE_SIGNING_ALLOWED=YES \
             -derivedDataPath build build
+      - name: Zip app
+        run: |
+          cd build/Build/Products/Release
+          zip -r Holo.app.zip Holo.app
       - uses: actions/upload-artifact@v4
         with:
           name: Holo-app
-          path: build/Build/Products/Release/Holo.app
+          path: build/Build/Products/Release/Holo.app.zip
