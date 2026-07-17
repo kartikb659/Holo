@@ -2,7 +2,7 @@ name: Build Holo
 on: workflow_dispatch
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
       - name: Build app
